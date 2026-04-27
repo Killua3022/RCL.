@@ -869,7 +869,7 @@ function openTrack(t) {
   document.body.style.overflow = 'hidden';
 
   // Persist play count
-  fetch('video_blog.php', {
+  fetch('/videos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: 'play_id=' + t.id

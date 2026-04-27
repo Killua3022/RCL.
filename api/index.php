@@ -379,7 +379,7 @@ function tagBadges($tags) {
             <?php endif; ?>
             <div class="bc-foot">
               <?php if ($date): ?><time><?= $date ?></time><?php endif; ?>
-              <a href="post.php?slug=<?= $slug ?>">Read<?= $i === 0 ? ' story' : '' ?> →</a>
+              <a href="/post?slug=<?= $slug ?>">Read<?= $i === 0 ? ' story' : '' ?> →</a>
             </div>
           </div>
         </article>
