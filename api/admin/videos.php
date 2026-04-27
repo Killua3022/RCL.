@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description'] ?? '');
     $category    = trim($_POST['category'] ?? 'Video');
     $duration    = trim($_POST['duration'] ?? '');
-    $is_featured = (int)isset($_POST['is_featured']);
-    $is_published= (int)isset($_POST['is_published']);
+    $is_featured = isset($_POST['is_featured']) ? 'true' : 'false';
+    $is_published = isset($_POST['is_published']) ? 'true' : 'false';
     $sort_order  = (int)($_POST['sort_order'] ?? 0);
 
     // Strip full YouTube URL down to 11-char ID
@@ -68,7 +68,7 @@ if (isset($_GET['delete'])) {
 // ── Toggle publish ────────────────────────────────────────────
 if (isset($_GET['toggle'])) {
     $id = (int)$_GET['toggle'];
-    $d->prepare('UPDATE videos SET is_published=1-is_published WHERE id=?')->execute([$id]);
+    $d->prepare('UPDATE videos SET is_published=NOT is_published WHERE id=?')->execute([$id]);
     header('Location: /admin/videos');
     exit;
 }
@@ -76,8 +76,8 @@ if (isset($_GET['toggle'])) {
 // ── Set featured ─────────────────────────────────────────────
 if (isset($_GET['feature'])) {
     $id = (int)$_GET['feature'];
-    $d->query('UPDATE videos SET is_featured=0');
-    $d->prepare('UPDATE videos SET is_featured=1 WHERE id=?')->execute([$id]);
+    $d->query('UPDATE videos SET is_featured=false');
+    $d->prepare('UPDATE videos SET is_featured=true WHERE id=?')->execute([$id]);
     header('Location: /admin/videos?msg=Featured+video+updated');
     exit;
 }

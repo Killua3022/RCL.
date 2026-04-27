@@ -14,7 +14,7 @@ try { $d->exec("ALTER TABLE tracks ADD COLUMN is_new TINYINT(1) DEFAULT 0"); } c
 // Fetch only published tracks
 $tracks = $d->query("
     SELECT * FROM tracks
-    WHERE is_published = 1
+    WHERE is_published = true
     ORDER BY sort_order ASC, id DESC
 ")->fetchAll();
 

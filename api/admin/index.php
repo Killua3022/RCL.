@@ -7,8 +7,8 @@ include __DIR__ . '/_layout.php';
 $d = db();
 
 // Stats
-$totalTracks      = (int)$d->query('SELECT COUNT(*) FROM tracks WHERE is_published=1')->fetchColumn();
-$totalVideos      = (int)$d->query('SELECT COUNT(*) FROM videos WHERE is_published=1')->fetchColumn();
+$totalTracks      = (int)$d->query('SELECT COUNT(*) FROM tracks WHERE is_published=true')->fetchColumn();
+$totalVideos      = (int)$d->query('SELECT COUNT(*) FROM videos WHERE is_published=true')->fetchColumn();
 $totalPosts       = (int)$d->query('SELECT COUNT(*) FROM posts WHERE status="published"')->fetchColumn();
 $totalSubs        = (int)$d->query('SELECT COUNT(*) FROM subscribers WHERE is_active=1')->fetchColumn();
 $totalPlays       = (int)$d->query('SELECT SUM(plays) FROM tracks')->fetchColumn();

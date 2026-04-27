@@ -9,24 +9,24 @@ $site = getAppearanceSettings($d);
 
 // Fetch featured/latest tracks (published, sorted)
 $tracks = $d->query(
-    "SELECT * FROM tracks WHERE is_published=1 ORDER BY is_featured DESC, sort_order ASC, id DESC LIMIT 4"
+    "SELECT * FROM tracks WHERE is_published=true ORDER BY is_featured DESC, sort_order ASC, id DESC LIMIT 4"
 )->fetchAll();
 
 // Fetch featured video (hero)
 $featuredVideo = $d->query(
-    "SELECT * FROM videos WHERE is_published=1 AND is_featured=1 LIMIT 1"
+    "SELECT * FROM videos WHERE is_published=true AND is_featured=true LIMIT 1"
 )->fetch();
 
 // Fallback: just the most recent published video
 if (!$featuredVideo) {
     $featuredVideo = $d->query(
-        "SELECT * FROM videos WHERE is_published=1 ORDER BY id DESC LIMIT 1"
+        "SELECT * FROM videos WHERE is_published=true ORDER BY id DESC LIMIT 1"
     )->fetch();
 }
 
 // Fetch grid videos (published, not featured, up to 5)
 $gridVideos = $d->query(
-    "SELECT * FROM videos WHERE is_published=1 AND is_featured=0 ORDER BY sort_order ASC, id DESC LIMIT 5"
+    "SELECT * FROM videos WHERE is_published=true AND is_featured=false ORDER BY sort_order ASC, id DESC LIMIT 5"
 )->fetchAll();
 
 // If we have fewer than 5, pull more (even if featured)
@@ -34,7 +34,7 @@ if (count($gridVideos) < 5 && $featuredVideo) {
     $limit = 5 - count($gridVideos);
     $fid   = (int)$featuredVideo['id'];
     $extra = $d->query(
-        "SELECT * FROM videos WHERE is_published=1 AND id != $fid ORDER BY sort_order ASC, id DESC LIMIT $limit"
+        "SELECT * FROM videos WHERE is_published=true AND id != $fid ORDER BY sort_order ASC, id DESC LIMIT $limit"
     )->fetchAll();
     // merge without duplicates
     $existingIds = array_column($gridVideos, 'id');
@@ -49,8 +49,8 @@ $posts = $d->query(
 )->fetchAll();
 
 // Stats (live)
-$statTracks  = (int)$d->query("SELECT COUNT(*) FROM tracks WHERE is_published=1")->fetchColumn();
-$statVideos  = (int)$d->query("SELECT COUNT(*) FROM videos WHERE is_published=1")->fetchColumn();
+$statTracks  = (int)$d->query("SELECT COUNT(*) FROM tracks WHERE is_published=true")->fetchColumn();
+$statVideos  = (int)$d->query("SELECT COUNT(*) FROM videos WHERE is_published=true")->fetchColumn();
 $statPosts   = (int)$d->query("SELECT COUNT(*) FROM posts  WHERE status='published'")->fetchColumn();
 
 // Helper: escape output

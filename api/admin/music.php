@@ -34,7 +34,7 @@ try {
     $d->exec("ALTER TABLE tracks ADD COLUMN lyrics TEXT");
 } catch (Exception $e) {}
 try {
-    $d->exec("ALTER TABLE tracks ADD COLUMN is_new TINYINT(1) DEFAULT 0");
+    $d->exec("ALTER TABLE tracks ADD COLUMN is_new BOOLEAN DEFAULT false");
 } catch (Exception $e) {}
 
 $msg = '';
@@ -65,9 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_track'])) {
     $ytId    = trim($_POST['youtube_id'] ?? '');
     $dur     = trim($_POST['duration'] ?? '');
     $sort    = (int)($_POST['sort_order'] ?? 0);
-    $pub     = isset($_POST['is_published']) ? 1 : 0;
-    $feat    = isset($_POST['is_featured'])  ? 1 : 0;
-    $isNew   = isset($_POST['is_new'])       ? 1 : 0;
+    $pub     = isset($_POST['is_published']) ? 'true' : 'false';
+    $feat    = isset($_POST['is_featured']) ? 'true' : 'false';
+    $isNew   = isset($_POST['is_new']) ? 'true' : 'false';
     $lyrics  = trim($_POST['lyrics']  ?? '');
     $color   = trim($_POST['cover_color'] ?? '');
 

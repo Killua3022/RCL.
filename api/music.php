@@ -9,24 +9,24 @@ $site = getAppearanceSettings($d);
 
 // Top tracks
 $topTracks = $d->query(
-    "SELECT * FROM tracks WHERE is_published=1 ORDER BY plays DESC LIMIT 12"
+    "SELECT * FROM tracks WHERE is_published=true ORDER BY plays DESC LIMIT 12"
 )->fetchAll();
 
 // New releases
 $newTracks = $d->query(
-    "SELECT * FROM tracks WHERE is_published=1 ORDER BY id DESC LIMIT 12"
+    "SELECT * FROM tracks WHERE is_published=true ORDER BY id DESC LIMIT 12"
 )->fetchAll();
 
 // All tracks
 $allTracks = $d->query(
-    "SELECT * FROM tracks WHERE is_published=1 ORDER BY sort_order ASC, id DESC"
+    "SELECT * FROM tracks WHERE is_published=true ORDER BY sort_order ASC, id DESC"
 )->fetchAll();
 
 // Playlists (if table exists)
 $playlists = [];
 try {
     $playlists = $d->query(
-        "SELECT * FROM playlists WHERE is_published=1 ORDER BY sort_order ASC, id DESC"
+        "SELECT * FROM playlists WHERE is_published=true ORDER BY sort_order ASC, id DESC"
     )->fetchAll();
 } catch (Exception $e) {}
 

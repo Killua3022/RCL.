@@ -6,7 +6,7 @@ require_once dirname(__DIR__) . '/includes/settings.php';
 $d = db();
 
 // Ensure extra columns exist
-foreach (['lyrics TEXT', 'is_new TINYINT(1) DEFAULT 0', 'is_featured TINYINT(1) DEFAULT 0'] as $col) {
+foreach (['lyrics TEXT', 'is_new BOOLEAN DEFAULT false', 'is_featured BOOLEAN DEFAULT false'] as $col) {
     try { $d->exec("ALTER TABLE tracks ADD COLUMN $col"); } catch (Exception $e) {}
 }
 
@@ -40,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_track'])) {
     $ytId   = trim($_POST['youtube_id'] ?? '');
     $dur    = trim($_POST['duration']   ?? '');
     $sort   = (int)($_POST['sort_order']  ?? 0);
-    $pub    = isset($_POST['is_published']) ? 1 : 0;
-    $feat   = isset($_POST['is_featured'])  ? 1 : 0;
-    $isNew  = isset($_POST['is_new'])       ? 1 : 0;
+    $pub    = isset($_POST['is_published']) ? 'true' : 'false';
+    $feat   = isset($_POST['is_featured']) ? 'true' : 'false';
+    $isNew  = isset($_POST['is_new']) ? 'true' : 'false';
     $lyrics = trim($_POST['lyrics']     ?? '');
     $color  = trim($_POST['cover_color']?? '');
     $base   = dirname(__DIR__) . '/';
