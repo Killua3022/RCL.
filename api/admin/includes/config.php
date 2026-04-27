@@ -2,9 +2,9 @@
 // ============================================================
 //  api/includes/config.php — Database connection & global config
 // ============================================================
-define('DB_HOST',    $_ENV['DB_HOST']    ?? getenv('DB_HOST')    ?: 'db.itcondmcocvtlyvsbyit.supabase.co');
-define('DB_NAME',    $_ENV['DB_NAME']    ?? getenv('DB_NAME')    ?: 'postgres');
-define('DB_USER',    $_ENV['DB_USER']    ?? getenv('DB_USER')    ?: 'postgres');
+define('DB_HOST',    $_ENV['DB_HOST']    ?? getenv('DB_HOST')    ?: 'localhost');
+define('DB_NAME',    $_ENV['DB_NAME']    ?? getenv('DB_NAME')    ?: 'rcl_db');
+define('DB_USER',    $_ENV['DB_USER']    ?? getenv('DB_USER')    ?: 'root');
 define('DB_PASS',    $_ENV['DB_PASS']    ?? getenv('DB_PASS')    ?: '');
 define('DB_CHARSET', 'utf8');
 
