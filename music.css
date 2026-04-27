@@ -1,0 +1,82 @@
+/* HERO */
+.music-hero {
+  padding: 120px 0 60px;
+  background: linear-gradient(to bottom, #121212, #000);
+}
+
+.music-hero h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.music-hero em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* GRID */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 22px;
+}
+
+/* CARD */
+.album-card {
+  background: #181818;
+  border-radius: 12px;
+  padding: 14px;
+  transition: .25s;
+  cursor: pointer;
+}
+
+.album-card:hover {
+  background: #222;
+  transform: translateY(-4px);
+}
+
+/* IMAGE */
+.album-art {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.album-art img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* PLAY BUTTON */
+.play-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #1db954;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #000;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: .2s;
+}
+
+.album-card:hover .play-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TEXT */
+.album-meta h3 {
+  margin-top: 10px;
+  font-size: .95rem;
+}
+
+.album-meta p {
+  font-size: .8rem;
+  color: var(--muted);
+}
