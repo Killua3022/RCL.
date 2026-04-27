@@ -23,6 +23,10 @@
     { "src": "/blog",              "dest": "/api/video_blog.php" },
     { "src": "/post(.*)",          "dest": "/api/post.php$1" },
     { "src": "/subscribe",         "dest": "/api/subscribe.php" },
+    { "src": "/style\\.css",       "dest": "/style.css" },
+    { "src": "/music\\.css",       "dest": "/music.css" },
+    { "src": "/images/(.*)",       "dest": "/images/$1" },
+    { "src": "/uploads/(.*)",      "dest": "/uploads/$1" },
     { "src": "/",                  "dest": "/api/index.php" },
     { "src": "/(.*)",              "dest": "/api/index.php" }
   ]
