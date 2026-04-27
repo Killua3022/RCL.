@@ -80,7 +80,7 @@ function tagBadges($tags) {
 <title>RCL — Music, Blogs &amp; Streams</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <?= siteStyleTag($site) ?>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <script>document.documentElement.setAttribute('data-theme','<?= htmlspecialchars($site['active_theme']) ?>');</script>
@@ -103,7 +103,7 @@ function tagBadges($tags) {
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-img-wrap">
-    <img src="images/rcl1.jpg" alt="RCL" class="hero-img">
+    <img src="/images/rcl1.jpg" alt="RCL" class="hero-img">
     <div class="hero-vignette"></div>
   </div>
 
