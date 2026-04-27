@@ -1,13 +1,29 @@
 {
   "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.9.0"
+    "api/**/*.php": {
+      "runtime": "vercel-php@0.7.2"
     }
   },
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.php"
-    }
+    { "src": "/admin/login",       "dest": "/api/admin/login.php" },
+    { "src": "/admin/logout",      "dest": "/api/admin/login.php" },
+    { "src": "/admin/dashboard",   "dest": "/api/admin/index.php" },
+    { "src": "/admin/music",       "dest": "/api/admin/music.php" },
+    { "src": "/admin/tracks",      "dest": "/api/admin/tracks.php" },
+    { "src": "/admin/posts",       "dest": "/api/admin/posts.php" },
+    { "src": "/admin/videos",      "dest": "/api/admin/videos.php" },
+    { "src": "/admin/analytics",   "dest": "/api/admin/analytics.php" },
+    { "src": "/admin/settings",    "dest": "/api/admin/settings.php" },
+    { "src": "/admin/appearance",  "dest": "/api/admin/appearance.php" },
+    { "src": "/admin/subscribers", "dest": "/api/admin/subscribers.php" },
+    { "src": "/admin/monetization","dest": "/api/admin/monetization.php" },
+    { "src": "/admin(.*)",         "dest": "/api/admin/index.php" },
+    { "src": "/music",             "dest": "/api/music.php" },
+    { "src": "/videos",            "dest": "/api/video_blog.php" },
+    { "src": "/blog",              "dest": "/api/blog.php" },
+    { "src": "/post",              "dest": "/api/post.php" },
+    { "src": "/subscribe",         "dest": "/api/subscribe.php" },
+    { "src": "/",                  "dest": "/api/index.php" },
+    { "src": "/(.*)",              "dest": "/api/index.php" }
   ]
 }
