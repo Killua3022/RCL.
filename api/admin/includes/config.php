@@ -2,9 +2,9 @@
 // ============================================================
 //  api/includes/config.php — Database connection & global config
 // ============================================================
-define('DB_HOST',    $_ENV['DB_HOST']    ?? getenv('DB_HOST')    ?: 'localhost');
-define('DB_NAME',    $_ENV['DB_NAME']    ?? getenv('DB_NAME')    ?: 'rcl_db');
-define('DB_USER',    $_ENV['DB_USER']    ?? getenv('DB_USER')    ?: 'root');
+define('DB_HOST',    $_ENV['DB_HOST']    ?? getenv('DB_HOST')    ?: 'aws-0-ap-southeast-1.pooler.supabase.com');
+define('DB_NAME',    $_ENV['DB_NAME']    ?? getenv('DB_NAME')    ?: 'postgres.itcondmcocvtlyvsbyit');
+define('DB_USER',    $_ENV['DB_USER']    ?? getenv('DB_USER')    ?: 'postgres.itcondmcocvtlyvsbyit');
 define('DB_PASS',    $_ENV['DB_PASS']    ?? getenv('DB_PASS')    ?: '');
 define('DB_CHARSET', 'utf8');
 
@@ -18,7 +18,7 @@ define('ALLOWED_AUDIO', ['mp3','wav','ogg','m4a']);
 function db(): PDO {
     static $pdo = null;
     if ($pdo === null) {
-        $dsn = 'pgsql:host='.DB_HOST.';port=5432;dbname='.DB_NAME;
+        $dsn = 'pgsql:host='.DB_HOST.';port=6543;dbname='.DB_NAME;
         $pdo = new PDO($dsn, DB_USER, DB_PASS, [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
